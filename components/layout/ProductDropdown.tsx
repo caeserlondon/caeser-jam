@@ -3,37 +3,44 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 type ProductDropdownProps = {
-	topOffset?: number
+	isVisible: boolean
+	onMouseEnter?: () => void
+	onMouseLeave?: () => void
 }
 
 export default function ProductDropdown({
-	topOffset = 84,
+	isVisible,
+	onMouseEnter,
+	onMouseLeave,
 }: ProductDropdownProps) {
 	return (
-		<div className='fixed inset-x-0 top-0 z-40 h-[30vh] min-h-[280px] border-b border-white/10 bg-white/8 backdrop-blur-2xl'>
-			<div
-				className='mx-auto flex h-full max-w-7xl items-start px-5 pb-6'
-				style={{ paddingTop: `${topOffset}px` }}
-			>
-				<div className='grid w-full grid-cols-5 gap-5'>
+		<div
+			className={`fixed left-1/2 top-0 z-40 -translate-x-1/2 transition-transform duration-750 ease-out ${
+				isVisible ? 'translate-y-0' : '-translate-y-full pointer-events-none'
+			}`}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+		>
+			<div className='rounded-b-[34px] border border-white/10 bg-white/8 px-5 pt-[86px] pb-6 backdrop-blur-2xl shadow-[0_18px_60px_rgba(0,0,0,0.18)]'>
+				<div className='grid w-max grid-cols-[repeat(5,225px)] gap-5'>
 					{flavours.map((flavour) => (
 						<Link
 							key={flavour.id}
 							href='/products'
-							className='group rounded-[28px] border border-white/12 bg-white/8 p-4 backdrop-blur-xl transition duration-300 hover:bg-white/12'
+							className='group block w-[225px] rounded-[28px] border border-white/12 bg-white/8 p-4 backdrop-blur-xl transition duration-750 hover:bg-white/12'
 						>
-							<div className='relative flex h-[180px] items-center justify-center overflow-hidden rounded-[22px] bg-white/6'>
+							<div className='relative flex h-[190px] items-center justify-center overflow-hidden rounded-[22px] bg-white/6'>
 								<Image
 									src={flavour.jarImage}
 									alt={flavour.name}
 									width={240}
 									height={340}
-									className='h-auto w-[120px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.28)] transition duration-300 group-hover:scale-[1.04]'
+									className='h-auto w-[122px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.28)] transition duration-750 group-hover:scale-[1.04]'
 								/>
 							</div>
 
 							<div className='pt-3 text-center'>
-								<p className='text-sm text-white/90'>{flavour.name}</p>
+								<p className='text-sm text-#e29611'>{flavour.name}</p>
 							</div>
 						</Link>
 					))}
