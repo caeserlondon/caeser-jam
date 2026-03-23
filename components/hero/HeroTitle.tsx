@@ -18,7 +18,7 @@ export default function HeroTitle({ title, titleVisible }: HeroTitleProps) {
 				}}
 			>
 				<h1
-					className={`${heroTitleFont.className} text-2xl leading-none text-white sm:text-3xl md:text-4xl lg:text-5xl`}
+					className={`${heroTitleFont.className} text-2xl leading-none text-#B8914E sm:text-3xl md:text-4xl lg:text-5xl`}
 				>
 					{title}
 				</h1>

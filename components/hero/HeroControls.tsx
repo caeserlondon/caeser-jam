@@ -19,7 +19,7 @@ export default function HeroControls({
 		<div className='absolute inset-x-0 bottom-[3%] flex items-center justify-center gap-3'>
 			<FlipButton text='Prev' onClick={onPrev} disabled={isTransitioning} />
 
-			<div className='rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[10px] tracking-[0.22em] text-white/60 backdrop-blur-xl'>
+			<div className='rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[10px] tracking-[0.22em] text-#B8914E backdrop-blur-xl'>
 				{String(currentIndex + 1).padStart(2, '0')} /{' '}
 				{String(total).padStart(2, '0')}
 			</div>
