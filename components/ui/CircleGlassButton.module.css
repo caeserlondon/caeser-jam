@@ -43,7 +43,7 @@
 }
 
 .front {
-	color: rgba(255, 255, 255, 0.92);
+	color: #b8914e;
 	border: 1px solid rgba(255, 255, 255, 0.22);
 	background: linear-gradient(
 		to bottom,
@@ -75,7 +75,7 @@
 }
 
 .back {
-	color: rgba(255, 255, 255, 0.95);
+	color: #b8914e;
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	background: linear-gradient(
 		to bottom,

@@ -49,7 +49,7 @@
 
 /* Front: transparent glass */
 .front {
-	color: rgba(255, 255, 255, 0.92);
+	color: #ce983c;
 	border: 1px solid rgba(255, 255, 255, 0.22);
 	background: linear-gradient(
 		to bottom,
@@ -82,7 +82,7 @@
 
 /* Back: slightly darker glass */
 .back {
-	color: rgba(255, 255, 255, 0.95);
+	color: #b8914e;
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	background: linear-gradient(
 		to bottom,
