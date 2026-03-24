@@ -1,3 +1,4 @@
+import CraftSection from '@/components/landing/CraftSection'
 import HeroScrollSection from '@/components/landing/HeroScrollSection'
 import JamCarouselSection from '@/components/landing/JamCarouselSection'
 import ShowcaseGrid from '@/components/landing/ShowcaseGrid'
@@ -9,6 +10,7 @@ export default function Home() {
 			<HeroScrollSection />
 			<StatementSection />
 			<ShowcaseGrid />
+			<CraftSection />
 			<JamCarouselSection />
 		</main>
 	)
