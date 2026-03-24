@@ -56,69 +56,83 @@ export default function JamCarouselSection() {
 	}
 
 	return (
-		<section className='relative overflow-hidden bg-[#ede7da] py-10'>
-			<div className='relative'>
-				<div className='overflow-hidden'>
-					<div
-						className='flex transition-transform duration-700 ease-out'
-						style={{ transform: `translateX(-${index * 33.333333}%)` }}
-					>
-						{visibleFlavours.map((flavour) => (
-							<div key={flavour.id} className='w-1/3 shrink-0'>
-								<Link href='/products' className='group relative block'>
-									<div className='relative h-[700px] overflow-hidden'>
-										<Image
-											src={backgroundByFlavour[flavour.id]}
-											alt={`${flavour.name} background`}
-											fill
-											className='object-cover'
-										/>
+		<section className='bg-[#ede7da] px-6 pb-24 pt-10'>
+			<div className='mx-auto max-w-7xl'>
+				<div className='mb-10 text-center'>
+					<h2 className='text-3xl font-medium text-[#111111] md:text-4xl'>
+						Our jams
+					</h2>
 
-										<div className='absolute inset-x-0 top-6 px-8 text-center'>
-											<h3 className='text-3xl font-light uppercase tracking-tight text-[#ffffff] md:text-4xl lg:text-5xl'>
-												{flavour.name}
-											</h3>
-										</div>
-
-										<div className='absolute inset-0 flex items-center justify-center pt-10'>
-											<Image
-												src={flavour.jarImage}
-												alt={flavour.name}
-												width={420}
-												height={620}
-												className='h-auto w-[420px] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.18)] transition duration-500 group-hover:scale-[1.04]'
-											/>
-										</div>
-
-										<div className='absolute inset-x-0 bottom-8 flex justify-center opacity-0 translate-y-3 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100'>
-											<FlipButton text='Discover' width={148} />
-										</div>
-									</div>
-								</Link>
-							</div>
-						))}
-					</div>
+					<p className='mx-auto mt-4 max-w-3xl text-base leading-7 text-black/70 md:text-lg'>
+						Packed with seasonal fruits, our jams are handcrafted using
+						traditional methods to deliver rich, full-bodied flavours in every
+						jar.
+					</p>
 				</div>
 
-				<div className='pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-8'>
-					<div className='pointer-events-auto'>
-						<CircleGlassButton
-							ariaLabel='Previous products'
-							onClick={goPrev}
-							disabled={index === 0}
+				<div className='relative'>
+					<div className='overflow-hidden'>
+						<div
+							className='flex transition-transform duration-700 ease-out'
+							style={{ transform: `translateX(-${index * 33.333333}%)` }}
 						>
-							<ArrowLeftIcon />
-						</CircleGlassButton>
+							{visibleFlavours.map((flavour) => (
+								<div key={flavour.id} className='w-1/3 shrink-0'>
+									<Link href='/products' className='group relative block'>
+										<div className='relative h-[700px] overflow-hidden'>
+											<Image
+												src={backgroundByFlavour[flavour.id]}
+												alt={`${flavour.name} background`}
+												fill
+												className='object-cover'
+											/>
+
+											<div className='absolute inset-x-0 top-6 px-8 text-center'>
+												<h3 className='text-3xl font-light uppercase tracking-tight text-[#111111] md:text-4xl lg:text-5xl'>
+													{flavour.name}
+												</h3>
+											</div>
+
+											<div className='absolute inset-0 flex items-center justify-center pt-10'>
+												<Image
+													src={flavour.jarImage}
+													alt={flavour.name}
+													width={420}
+													height={620}
+													className='h-auto w-[230px] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.18)] transition duration-500 group-hover:scale-[1.04]'
+												/>
+											</div>
+
+											<div className='absolute inset-x-0 bottom-8 flex justify-center opacity-0 translate-y-3 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100'>
+												<FlipButton text='Discover' width={148} />
+											</div>
+										</div>
+									</Link>
+								</div>
+							))}
+						</div>
 					</div>
 
-					<div className='pointer-events-auto'>
-						<CircleGlassButton
-							ariaLabel='Next products'
-							onClick={goNext}
-							disabled={index === maxIndex}
-						>
-							<ArrowRightIcon />
-						</CircleGlassButton>
+					<div className='pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-8'>
+						<div className='pointer-events-auto'>
+							<CircleGlassButton
+								ariaLabel='Previous products'
+								onClick={goPrev}
+								disabled={index === 0}
+							>
+								<ArrowLeftIcon />
+							</CircleGlassButton>
+						</div>
+
+						<div className='pointer-events-auto'>
+							<CircleGlassButton
+								ariaLabel='Next products'
+								onClick={goNext}
+								disabled={index === maxIndex}
+							>
+								<ArrowRightIcon />
+							</CircleGlassButton>
+						</div>
 					</div>
 				</div>
 			</div>
