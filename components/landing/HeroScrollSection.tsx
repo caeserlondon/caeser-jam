@@ -54,14 +54,14 @@ export default function HeroScrollSection() {
 		}
 	}, [])
 
-	const stageTranslateY = -progress * 260
-	const stageOpacity = clamp(1 - progress * 1.25, 0, 1)
+	const stageTranslateY = -progress * 250
+	const stageOpacity = clamp(1 - progress * 1.35, 0, 1)
 
-	const controlsTranslateY = progress * 220
+	const controlsTranslateY = progress * 180
 	const controlsOpacity = clamp(1 - progress * 1.8, 0, 1)
 
 	return (
-		<section ref={sectionRef} className='relative h-[180vh]'>
+		<section ref={sectionRef} className='relative h-[125vh]'>
 			<div className='sticky top-0 h-screen overflow-hidden bg-black'>
 				<HeroBackground
 					baseBgIndex={baseBgIndex}
