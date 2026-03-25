@@ -1,4 +1,4 @@
-import SiteHeader from '@/components/layout/SiteHeader'
+import LayoutChrome from '@/components/layout/LayoutChrome'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -15,8 +15,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body>
-				<SiteHeader />
-				{children}
+				<LayoutChrome>{children}</LayoutChrome>
 			</body>
 		</html>
 	)
