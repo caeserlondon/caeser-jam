@@ -1,6 +1,6 @@
 import CraftSection from '@/components/landing/CraftSection'
 import HeroScrollSection from '@/components/landing/HeroScrollSection'
-import JamCarouselSection from '@/components/landing/JamCarouselSection'
+import JamFlavoursShowcaseSection from '@/components/landing/JamFlavoursShowcaseSection'
 import ShowcaseGrid from '@/components/landing/ShowcaseGrid'
 import StatementSection from '@/components/landing/StatementSection'
 
@@ -9,9 +9,9 @@ export default function Home() {
 		<main>
 			<HeroScrollSection />
 			<StatementSection />
-			<ShowcaseGrid />
 			<CraftSection />
-			<JamCarouselSection />
+			<ShowcaseGrid />
+			<JamFlavoursShowcaseSection />
 		</main>
 	)
 }
