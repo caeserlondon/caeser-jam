@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { useRef, useState } from 'react'
 import ProductDropdown from './ProductDropdown'
 
+import { useRouter } from 'next/navigation'
+
 function UserIcon() {
 	return (
 		<svg
@@ -89,9 +91,11 @@ export default function SiteHeader() {
 		}, 100)
 	}
 
+	const router = useRouter()
+
 	return (
 		<>
-			<header className='pointer-events-none fixed inset-x-0 top-0 z-50'>
+			<header className='pointer-events-none absolute inset-x-0 top-0 z-50'>
 				<div className='mx-auto flex max-w-7xl items-start justify-between px-4 pt-5 sm:px-6 lg:px-8'>
 					<div className='pointer-events-auto'>
 						<Link href='/'>
@@ -105,6 +109,7 @@ export default function SiteHeader() {
 								text='Products'
 								rightIcon={<ChevronDownIcon />}
 								width={132}
+								onClick={() => router.push('/products')}
 							/>
 						</div>
 
