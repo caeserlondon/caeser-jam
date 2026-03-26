@@ -1,43 +1,168 @@
+'use client'
+
+import { useEffect, useMemo, useRef, useState } from 'react'
+
+const STATEMENT = 'DESIGN & BUILD BY CAESER IBRAHIM'
+const GAP = 250 // exact gap between one sentence and the next
+const SPEED = 110 // px per second
+const ARC_HEIGHT = 260
+const TEXT_LAYER_HEIGHT = 380
+const OVERSIZE = 1.28
+
+// tweak these to taste
+const FONT_SIZE = 72
+const TEXT_DY = -55 // pushes the text down below the arc path
+
 export default function StatementSection() {
+	const sectionRef = useRef<HTMLElement>(null)
+	const pathRef = useRef<SVGPathElement>(null)
+	const measureTextRef = useRef<SVGTextElement>(null)
+
+	const [containerWidth, setContainerWidth] = useState(1400)
+	const [pathLength, setPathLength] = useState(0)
+	const [textLength, setTextLength] = useState(0)
+	const [progress, setProgress] = useState(0)
+
+	const arcWidth = Math.max(containerWidth * OVERSIZE, 1200)
+
+	const arcPath = useMemo(() => {
+		return `M0,${ARC_HEIGHT} Q${arcWidth / 2},0 ${arcWidth},${ARC_HEIGHT}`
+	}, [arcWidth])
+
+	useEffect(() => {
+		if (!sectionRef.current) return
+
+		const el = sectionRef.current
+
+		const updateWidth = () => {
+			setContainerWidth(el.clientWidth)
+		}
+
+		updateWidth()
+
+		const ro = new ResizeObserver(updateWidth)
+		ro.observe(el)
+
+		return () => ro.disconnect()
+	}, [])
+
+	useEffect(() => {
+		const measure = () => {
+			if (!pathRef.current || !measureTextRef.current) return
+
+			setPathLength(pathRef.current.getTotalLength())
+			setTextLength(measureTextRef.current.getComputedTextLength())
+		}
+
+		measure()
+		document.fonts?.ready.then(measure)
+		window.addEventListener('resize', measure)
+
+		return () => {
+			window.removeEventListener('resize', measure)
+		}
+	}, [arcWidth])
+
+	useEffect(() => {
+		if (!textLength) return
+
+		const distance = textLength + GAP
+		let frameId = 0
+		let lastTime = performance.now()
+
+		const tick = (now: number) => {
+			const delta = (now - lastTime) / 1000
+			lastTime = now
+
+			setProgress((prev) => (prev + SPEED * delta) % distance)
+			frameId = requestAnimationFrame(tick)
+		}
+
+		frameId = requestAnimationFrame(tick)
+
+		return () => cancelAnimationFrame(frameId)
+	}, [textLength])
+
+	const offsets = useMemo(() => {
+		if (!pathLength || !textLength) return []
+
+		const distance = textLength + GAP
+
+		// enough copies so the path is always filled
+		const copyCount =
+			Math.ceil((pathLength + textLength + distance * 2) / distance) + 1
+
+		return Array.from({ length: copyCount }, (_, i) => {
+			return -distance - progress + i * distance
+		})
+	}, [pathLength, textLength, progress])
+
 	return (
-		<section className='relative bg-[#ede7da] pb-20 pt-12 overflow-hidden'>
-			{/* top cream arc */}
-			<div className='absolute inset-x-0 top-0 -translate-y-full leading-none'>
+		<section
+			ref={sectionRef}
+			className='relative -mt-[220px] overflow-hidden pt-[220px]'
+		>
+			{/* cream arc */}
+			<div className='absolute inset-x-0 top-0 h-[240px] pointer-events-none overflow-hidden'>
 				<svg
-					viewBox='0 0 1440 180'
+					viewBox={`0 0 ${arcWidth} ${ARC_HEIGHT}`}
 					preserveAspectRatio='none'
-					className='block h-[180px] w-full'
+					className='absolute left-1/2 top-0 h-full -translate-x-1/2'
+					style={{ width: `${OVERSIZE * 100}%` }}
 					aria-hidden='true'
 				>
 					<path
-						d='M0,180 C260,70 1180,70 1440,180 L1440,180 L0,180 Z'
+						d={`${arcPath} L${arcWidth},${ARC_HEIGHT} L0,${ARC_HEIGHT} Z`}
 						fill='#ede7da'
 					/>
 				</svg>
 			</div>
 
-			<div className='mx-auto max-w-[1800px] px-4'>
-				<svg
-					viewBox='0 0 2400 650'
-					className='h-auto w-full overflow-visible'
-					aria-label='Design and build by Caeser Ibrahim'
-				>
-					<path
-						id='statement-arc'
-						d='M 120 500 Q 1200 120 2280 500'
-						fill='transparent'
-					/>
+			{/* cream body */}
+			<div className='relative bg-[#ede7da] pb-16'>
+				{/* moving curved text */}
+				<div className='relative -mt-[20px] h-[420px] overflow-hidden'>
+					<svg
+						viewBox={`0 0 ${arcWidth} ${TEXT_LAYER_HEIGHT}`}
+						preserveAspectRatio='none'
+						className='absolute left-1/2 top-0 h-full -translate-x-1/2'
+						style={{ width: `${OVERSIZE * 100}%` }}
+						aria-label='Design and build by Caeser Ibrahim'
+					>
+						<defs>
+							<path id='statement-arc-path' d={arcPath} ref={pathRef} />
+						</defs>
 
-					<text fill='#111111' fontSize='92' fontWeight='300' letterSpacing='1'>
-						<textPath
-							href='#statement-arc'
-							startOffset='50%'
-							textAnchor='middle'
+						{/* hidden text only for measuring exact width */}
+						<text
+							ref={measureTextRef}
+							x={-99999}
+							y={-99999}
+							fontSize={FONT_SIZE}
+							fontWeight={300}
+							letterSpacing='2px'
+							style={{ fontFamily: 'inherit', textTransform: 'uppercase' }}
 						>
-							DESIGN &amp; BUILD BY CAESER IBRAHIM
-						</textPath>
-					</text>
-				</svg>
+							{STATEMENT}
+						</text>
+
+						{offsets.map((offset, index) => (
+							<text
+								key={index}
+								fill='#111111'
+								fontSize={FONT_SIZE}
+								fontWeight={300}
+								letterSpacing='2px'
+								style={{ fontFamily: 'inherit', textTransform: 'uppercase' }}
+								dy={TEXT_DY}
+							>
+								<textPath href='#statement-arc-path' startOffset={offset}>
+									{STATEMENT}
+								</textPath>
+							</text>
+						))}
+					</svg>
+				</div>
 			</div>
 		</section>
 	)
