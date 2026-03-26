@@ -26,7 +26,7 @@ export default function ProductDropdown({
 					{flavours.map((flavour) => (
 						<Link
 							key={flavour.id}
-							href='/products'
+							href={`/products/${flavour.id}`}
 							className='group block w-[225px] rounded-[28px] border border-white/12 bg-white/8 p-4 backdrop-blur-xl transition duration-750 hover:bg-white/12'
 						>
 							<div className='relative flex h-[190px] items-center justify-center overflow-hidden rounded-[22px] bg-white/6'>
