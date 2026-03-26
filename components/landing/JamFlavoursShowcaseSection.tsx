@@ -26,7 +26,10 @@ export default function JamFlavoursShowcaseSection() {
 				<div className='grid grid-cols-5 gap-0'>
 					{flavours.map((flavour) => (
 						<div key={flavour.id} className='min-w-0'>
-							<Link href='/products' className='group relative block'>
+							<Link
+								href={`/products/${flavour.id}`}
+								className='group relative block'
+							>
 								<div className='relative h-[700px] overflow-hidden'>
 									<Image
 										src={backgroundByFlavour[flavour.id]}
