@@ -1,12 +1,11 @@
 'use client'
 
+import { useCart } from '@/components/cart/CartProvider'
 import CircleGlassButton from '@/components/ui/CircleGlassButton'
 import FlipButton from '@/components/ui/FlipButton'
-import Link from 'next/link'
-import { useRef, useState } from 'react'
-import ProductDropdown from './ProductDropdown'
-
 import { useRouter } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
+import ProductDropdown from './ProductDropdown'
 
 function UserIcon() {
 	return (
@@ -57,28 +56,40 @@ export default function SiteHeader() {
 	const closeTimerRef = useRef<number | null>(null)
 	const unmountTimerRef = useRef<number | null>(null)
 
+	const router = useRouter()
+	const { openCart, itemCount } = useCart()
+
+	useEffect(() => {
+		return () => {
+			if (closeTimerRef.current !== null) {
+				window.clearTimeout(closeTimerRef.current)
+			}
+			if (unmountTimerRef.current !== null) {
+				window.clearTimeout(unmountTimerRef.current)
+			}
+		}
+	}, [])
+
 	const openProducts = () => {
-		if (closeTimerRef.current) {
+		if (closeTimerRef.current !== null) {
 			window.clearTimeout(closeTimerRef.current)
 			closeTimerRef.current = null
 		}
 
-		if (unmountTimerRef.current) {
+		if (unmountTimerRef.current !== null) {
 			window.clearTimeout(unmountTimerRef.current)
 			unmountTimerRef.current = null
 		}
 
 		if (!productsMounted) {
 			setProductsMounted(true)
-
 			requestAnimationFrame(() => {
-				requestAnimationFrame(() => {
-					setProductsVisible(true)
-				})
+				setProductsVisible(true)
 			})
-		} else {
-			setProductsVisible(true)
+			return
 		}
+
+		setProductsVisible(true)
 	}
 
 	const closeProducts = () => {
@@ -91,19 +102,15 @@ export default function SiteHeader() {
 		}, 100)
 	}
 
-	const router = useRouter()
-
 	return (
 		<>
 			<header className='pointer-events-none absolute inset-x-0 top-0 z-50'>
 				<div className='mx-auto flex max-w-7xl items-start justify-between px-4 pt-5 sm:px-6 lg:px-8'>
 					<div className='pointer-events-auto'>
-						<Link href='/'>
-							<FlipButton text='Home' width={108} />
-						</Link>
+						<FlipButton text='Home' width={108} href='/' />
 					</div>
 
-					<div className='pointer-events-auto flex items-center gap-3'>
+					<div className='pointer-events-auto flex items-center gap-4'>
 						<div onMouseEnter={openProducts} onMouseLeave={closeProducts}>
 							<FlipButton
 								text='Products'
@@ -113,32 +120,35 @@ export default function SiteHeader() {
 							/>
 						</div>
 
-						<Link href='/about'>
-							<FlipButton text='About' width={108} />
-						</Link>
-
-						<Link href='/contact'>
-							<FlipButton text='Contact' width={108} />
-						</Link>
+						<FlipButton text='About' width={108} href='/about' />
+						<FlipButton text='Contact' width={108} href='/contact' />
 
 						<CircleGlassButton ariaLabel='User account'>
 							<UserIcon />
 						</CircleGlassButton>
 
-						<CircleGlassButton ariaLabel='Shopping cart'>
-							<CartIcon />
-						</CircleGlassButton>
+						<div className='relative'>
+							<CircleGlassButton ariaLabel='Shopping cart' onClick={openCart}>
+								<CartIcon />
+							</CircleGlassButton>
+
+							{itemCount > 0 ? (
+								<span className='absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#111111] px-1 text-[11px] font-medium text-[#ede7da] shadow-[0_4px_12px_rgba(0,0,0,0.18)]'>
+									{itemCount}
+								</span>
+							) : null}
+						</div>
 					</div>
 				</div>
 			</header>
 
-			{productsMounted && (
+			{productsMounted ? (
 				<ProductDropdown
 					isVisible={productsVisible}
 					onMouseEnter={openProducts}
 					onMouseLeave={closeProducts}
 				/>
-			)}
+			) : null}
 		</>
 	)
 }
