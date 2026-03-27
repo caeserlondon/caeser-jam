@@ -1,8 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
-};
+	images: {
+		formats: ['image/avif', 'image/webp'],
+		imageSizes: [32, 48, 64, 96, 128, 192, 256, 320, 384, 448, 640],
+	},
+	reactCompiler: true,
+}
 
-export default nextConfig;
+export default nextConfig
