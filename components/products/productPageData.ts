@@ -61,25 +61,25 @@ export function getProductSlides(flavour: Flavour): ProductSlide[] {
 			id: 'kitchen',
 			label: `${flavour.name} kitchen`,
 			kind: 'image',
-			src: `/images/scenes/${flavour.id}-kitchen.png`,
+			src: `/images/scenes/${flavour.id}-kitchen.avif`,
 		},
 		{
 			id: 'sandwich',
 			label: `${flavour.name} sandwich`,
 			kind: 'image',
-			src: `/images/scenes/${flavour.id}-sandwich.png`,
+			src: `/images/scenes/${flavour.id}-sandwich.avif`,
 		},
 		{
 			id: 'showcase-3',
 			label: 'Showcase 3',
 			kind: 'image',
-			src: '/images/showcase/showcase-3.png',
+			src: '/images/showcase/showcase-3.avif',
 		},
 		{
 			id: 'showcase-4',
 			label: 'Showcase 4',
 			kind: 'image',
-			src: '/images/showcase/showcase-4.png',
+			src: '/images/showcase/showcase-4.avif',
 		},
 	]
 }

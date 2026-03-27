@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const backgroundByFlavour: Record<string, string> = {
-	blackberry: '/images/slider/blackberry.jpg',
-	strawberry: '/images/slider/strawberry.jpg',
-	raspberry: '/images/slider/raspberry.jpg',
-	orange: '/images/slider/orange.jpg',
-	kiwi: '/images/slider/kiwi.jpg',
+	blackberry: '/images/slider/blackberry.avif',
+	strawberry: '/images/slider/strawberry.avif',
+	raspberry: '/images/slider/raspberry.avif',
+	orange: '/images/slider/orange.avif',
+	kiwi: '/images/slider/kiwi.avif',
 }
 
 export default function JamFlavoursShowcaseSection() {
@@ -36,6 +36,7 @@ export default function JamFlavoursShowcaseSection() {
 										alt={`${flavour.name} background`}
 										fill
 										className='object-cover'
+										sizes='(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 270px'
 									/>
 
 									<div className='absolute inset-0 flex items-center justify-center pt-10'>

@@ -74,7 +74,7 @@ const productCards: ProductCardItem[] = [
 		id: 'apple',
 		name: 'Apple',
 		slug: 'apple',
-		jarImage: '/images/jars/apple-jar.png',
+		jarImage: '/images/jars/apple-jar.avif',
 		gradient: 'linear-gradient(135deg, #556f17 0%, #87b82f 52%, #d9ec9e 100%)',
 		comingSoon: true,
 	},
