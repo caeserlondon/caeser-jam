@@ -2,7 +2,6 @@
 
 import CircleGlassButton from '@/components/ui/CircleGlassButton'
 import FlipButton from '@/components/ui/FlipButton'
-import Link from 'next/link'
 
 function GlobeIcon() {
 	return (
@@ -43,7 +42,7 @@ export default function SiteFooter() {
 			<div className='mx-auto max-w-7xl border-t border-black/10 pt-12'>
 				<div className='flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between'>
 					<div className='max-w-xl'>
-						<p className='text-[11px] uppercase tracking-[0.24em] text-black/40'>
+						<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 							Designed & built by
 						</p>
 
@@ -51,15 +50,13 @@ export default function SiteFooter() {
 							Caeser Ibrahim
 						</h2>
 
-						<p className='mt-4 text-base text-black/60 md:text-lg'>
+						<p className='mt-4 text-base text-[#555555] md:text-lg'>
 							Full Stack Software Engineer, London, UK
 						</p>
 					</div>
 
 					<div className='flex flex-wrap items-center gap-4'>
-						<Link href='/contact' className='ml-1'>
-							<FlipButton text='Contact' width={170} />
-						</Link>
+						<FlipButton text='Contact' width={170} href='/contact' />
 
 						<CircleGlassButton
 							href='https://caeser-ibrahim.vercel.app'
@@ -88,7 +85,7 @@ export default function SiteFooter() {
 				</div>
 
 				<div className='mt-12 border-t border-black/10 pt-5'>
-					<p className='text-sm text-black/45 text-center'>
+					<p className='text-center text-sm text-[#555555]'>
 						© {year} Caeser Ibrahim. All rights reserved.
 					</p>
 				</div>
