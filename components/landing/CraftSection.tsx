@@ -9,16 +9,17 @@ export default function CraftSection() {
 
 					<div className='relative ml-8 mt-6 aspect-[5/4] overflow-hidden'>
 						<Image
-							src='/images/content/craft.jpg'
+							src='/images/content/craft.avif'
 							alt='Fresh fruit for Caeser Jam'
 							fill
 							className='object-cover'
+							sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 720px'
 						/>
 					</div>
 				</div>
 
 				<div className='max-w-xl'>
-					<p className='text-xs uppercase tracking-[0.32em] text-black/40'>
+					<p className='text-xs uppercase tracking-[0.32em] text-[#4f4f4f]'>
 						The Caeser Jam promise
 					</p>
 
