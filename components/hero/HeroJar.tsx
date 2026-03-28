@@ -28,7 +28,8 @@ export default function HeroJar({ jarImage, name, jarVisible }: HeroJarProps) {
 					width={460}
 					height={680}
 					className='h-auto w-[240px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)] sm:w-[285px] md:w-[335px] lg:w-[385px]'
-					priority
+					sizes='(max-width: 639px) 240px, (max-width: 767px) 285px, (max-width: 1023px) 335px, 385px'
+					fetchPriority='high'
 				/>
 			</div>
 		</div>

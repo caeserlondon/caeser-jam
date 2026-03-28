@@ -31,7 +31,9 @@ export default function HeroScene({
 				width={1800}
 				height={1100}
 				className='h-auto w-full object-contain'
-				priority
+				sizes='(max-width: 820px) 100vw, 778px'
+				preload
+				fetchPriority='high'
 			/>
 		</div>
 	)
