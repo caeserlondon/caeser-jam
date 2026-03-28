@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.caeser-jam.vercel.app/sitemap.xml
