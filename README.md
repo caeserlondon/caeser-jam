@@ -1,11 +1,9 @@
 # Caeser Jam
 
-<table>
-  <tr>
-    <td><img src="./public/images/readme/screenshot-1.png" alt="Caeser Jam homepage screenshot" width="100%" /></td>
-    <td><img src="./public/images/readme/screenshot-2.png" alt="Caeser Jam product showcase screenshot" width="100%" /></td>
-  </tr>
-</table>
+<p align="center">
+  <img src="./assets/jam-homepage.png" alt="Caeser Jam homepage screenshot" width="49%" />
+  <img src="./assets/jam-products.png" alt="Caeser Jam product showcase screenshot" width="49%" />
+</p>
 
 A premium portfolio-style jam brand website designed and built to showcase luxury visual design, refined frontend craftsmanship, and polished user experience.
 
@@ -32,8 +30,8 @@ The site features immersive product presentation, smooth interaction design, a c
 ## Web Vitals & Lighthouse Performance
 
 <p align="center">
-  <img src="./assets/gtmetrix.png" alt="Caeser Real Estate GTmetrix results" width="49%" />
-  <img src="./assets/page-speed-insite.png" alt="Caeser Real Estate PageSpeed Insights results" width="49%" />
+  <img src="./assets/page-speed-insite.png" alt="Caeser Jam Page Speed Insights results" width="49%" />
+  <img src="./assets/axe-core.png" alt="Caeser Jam homepage results" width="49%" />
 </p>
 
 This project achieved **100% in all Lighthouse categories**:
