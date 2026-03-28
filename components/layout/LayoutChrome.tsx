@@ -17,7 +17,7 @@ export default function LayoutChrome({ children }: LayoutChromeProps) {
 	return (
 		<CartProvider>
 			<SiteHeader />
-			<main>{children}</main>
+			{children}
 			{!hideFooter && <SiteFooter />}
 			<CartDrawer />
 		</CartProvider>
