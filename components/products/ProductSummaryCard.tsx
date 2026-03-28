@@ -24,7 +24,7 @@ export default function ProductSummaryCard({
 }: ProductSummaryCardProps) {
 	return (
 		<div className='rounded-[34px] border border-black/10 bg-white/30 p-7 shadow-[0_20px_60px_rgba(0,0,0,0.05)] backdrop-blur-sm md:p-8 lg:sticky lg:top-28'>
-			<p className='text-[11px] uppercase tracking-[0.22em] text-black/45'>
+			<p className='text-[11px] uppercase tracking-[0.22em] text-[#555555]'>
 				Small-batch fruit preserve
 			</p>
 
@@ -35,7 +35,7 @@ export default function ProductSummaryCard({
 			<p className='mt-4 text-lg text-black/66'>{flavour.subtitle}</p>
 
 			<div className='mt-10 border-t border-black/10 pt-8'>
-				<p className='text-[11px] uppercase tracking-[0.22em] text-black/45'>
+				<p className='text-[11px] uppercase tracking-[0.22em] text-[#555555]'>
 					Quantity
 				</p>
 

@@ -23,7 +23,7 @@ export default function ProductNutrition({ flavour }: ProductNutritionProps) {
 					</div>
 
 					<div>
-						<p className='text-[11px] uppercase tracking-[0.24em] text-black/42'>
+						<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 							Nutrition
 						</p>
 

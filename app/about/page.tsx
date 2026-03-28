@@ -112,7 +112,7 @@ export default function AboutPage() {
 				<div className='mx-auto max-w-7xl'>
 					<div className='grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start xl:grid-cols-[minmax(0,1fr)_360px]'>
 						<div className='max-w-3xl'>
-							<p className='text-[11px] uppercase tracking-[0.28em] text-black/45'>
+							<p className='text-[11px] uppercase tracking-[0.28em] text-[#555555]'>
 								About
 							</p>
 
@@ -137,13 +137,13 @@ export default function AboutPage() {
 						</div>
 
 						<div className='rounded-[28px] border border-black/10 bg-white/35 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.05)] backdrop-blur-sm md:p-6'>
-							<p className='text-[11px] uppercase tracking-[0.24em] text-black/45'>
+							<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 								At a glance
 							</p>
 
 							<div className='mt-5 space-y-3'>
 								<div className='rounded-2xl border border-black/8 bg-black/[0.03] px-4 py-4'>
-									<p className='text-xs uppercase tracking-[0.18em] text-black/42'>
+									<p className='text-xs uppercase tracking-[0.18em] text-[#555555]'>
 										Role
 									</p>
 									<p className='mt-2 text-sm font-medium text-black/80'>
@@ -152,7 +152,7 @@ export default function AboutPage() {
 								</div>
 
 								<div className='rounded-2xl border border-black/8 bg-black/[0.03] px-4 py-4'>
-									<p className='text-xs uppercase tracking-[0.18em] text-black/42'>
+									<p className='text-xs uppercase tracking-[0.18em] text-[#555555]'>
 										Focus
 									</p>
 									<p className='mt-2 text-sm font-medium text-black/80'>
@@ -161,7 +161,7 @@ export default function AboutPage() {
 								</div>
 
 								<div className='rounded-2xl border border-black/8 bg-black/[0.03] px-4 py-4'>
-									<p className='text-xs uppercase tracking-[0.18em] text-black/42'>
+									<p className='text-xs uppercase tracking-[0.18em] text-[#555555]'>
 										This website
 									</p>
 									<p className='mt-2 text-sm font-medium text-black/80'>
@@ -194,7 +194,7 @@ export default function AboutPage() {
 			<section className='px-6 py-12 md:py-16'>
 				<div className='mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]'>
 					<div className='rounded-[32px] border border-black/10 bg-white/30 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.05)]'>
-						<p className='text-[11px] uppercase tracking-[0.24em] text-black/45'>
+						<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 							How I can support your team
 						</p>
 
@@ -211,7 +211,7 @@ export default function AboutPage() {
 					</div>
 
 					<div className='rounded-[32px] border border-black/10 bg-white/30 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.05)]'>
-						<p className='text-[11px] uppercase tracking-[0.24em] text-black/45'>
+						<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 							Featured build
 						</p>
 
@@ -280,7 +280,7 @@ export default function AboutPage() {
 			<section className='px-6 py-12 md:py-16'>
 				<div className='mx-auto max-w-7xl rounded-[32px] border border-black/10 bg-white/30 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.05)] md:p-10'>
 					<div className='max-w-3xl'>
-						<p className='text-[11px] uppercase tracking-[0.24em] text-black/45'>
+						<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 							Technical stack
 						</p>
 						<h2 className='mt-5 text-3xl font-extralight tracking-[-0.03em] md:text-4xl'>

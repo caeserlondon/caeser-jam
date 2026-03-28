@@ -13,7 +13,7 @@ export default function ProductIngredients({
 	return (
 		<section className='px-6 pb-8'>
 			<div className='mx-auto max-w-7xl'>
-				<p className='text-[11px] uppercase tracking-[0.24em] text-black/42'>
+				<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 					Ingredients
 				</p>
 
