@@ -32,7 +32,7 @@ export default function ProductPage() {
 
 	if (!flavour) {
 		return (
-			<main className='min-h-screen bg-[#ede7da] px-6 py-32 text-[#111111]'>
+			<main className='min-h-screen bg-[#ede7da] px-4 py-28 text-[#111111] sm:px-6 md:py-32'>
 				<div className='mx-auto max-w-6xl'>
 					<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 						Product not found
@@ -76,14 +76,14 @@ export default function ProductPage() {
 
 	return (
 		<main className='bg-[#ede7da] text-[#111111]'>
-			<section className='px-6 pb-16 pt-28 md:pb-20 md:pt-36'>
+			<section className='px-4 pb-14 pt-24 sm:px-6 md:pb-20 md:pt-36'>
 				<div className='mx-auto max-w-7xl'>
-					<div className='mb-10 flex items-center justify-between gap-4'>
+					<div className='mb-8 flex items-start justify-between gap-4 md:mb-10 md:items-center'>
 						<div>
 							<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 								Product
 							</p>
-							<h1 className='mt-3 text-4xl font-extralight uppercase tracking-[-0.04em] md:text-6xl'>
+							<h1 className='mt-3 text-2xl font-extralight uppercase tracking-[-0.04em] sm:text-3xl md:text-6xl'>
 								{flavour.name}
 							</h1>
 						</div>
@@ -97,7 +97,7 @@ export default function ProductPage() {
 						</div>
 					</div>
 
-					<div className='grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_420px] lg:items-start'>
+					<div className='grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1.05fr)_420px] lg:items-start'>
 						<ProductGallery
 							flavour={flavour}
 							slides={slides}

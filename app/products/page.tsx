@@ -83,19 +83,19 @@ const productCards: ProductCardItem[] = [
 function ProductCard({ item }: { item: ProductCardItem }) {
 	const content = (
 		<div
-			className='group relative min-h-[760px] overflow-hidden border border-black/8'
+			className='group relative overflow-hidden border border-black/8'
 			style={{ backgroundImage: item.gradient }}
 		>
 			<div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_34%),linear-gradient(to_bottom,rgba(255,255,255,0.04),rgba(0,0,0,0.10))]' />
 
-			<div className='relative z-10 flex h-full flex-col'>
-				<div className='flex items-start justify-between px-7 pb-2 pt-7 md:px-8 md:pt-8'>
+			<div className='relative z-10 flex flex-col'>
+				<div className='flex items-start justify-between px-4 pb-2 pt-4 sm:px-6 sm:pt-6 md:px-8 md:pt-8'>
 					<div>
 						<p className='text-[11px] uppercase tracking-[0.22em] text-white/72'>
 							{item.comingSoon ? 'New flavour' : 'Product'}
 						</p>
 
-						<h2 className='mt-3 text-3xl font-light uppercase tracking-[-0.03em] text-white md:text-4xl'>
+						<h2 className='mt-2 text-2xl font-light uppercase tracking-[-0.03em] text-white sm:text-3xl md:text-4xl'>
 							{item.name}
 						</h2>
 					</div>
@@ -111,19 +111,20 @@ function ProductCard({ item }: { item: ProductCardItem }) {
 					)}
 				</div>
 
-				<div className='relative flex flex-1 items-center justify-center px-6 pb-10 pt-4 md:px-8'>
-					<div className='relative h-[720px] w-full max-w-[520px] transition duration-500 group-hover:scale-[1.03]'>
+				<div className='relative flex items-center justify-center px-4 pb-4 pt-1 sm:px-6 sm:pb-5 sm:pt-2 md:px-8 md:pb-6 md:pt-4'>
+					<div className='relative h-[220px] w-full max-w-[180px] transition duration-500 group-hover:scale-[1.03] sm:h-[280px] sm:max-w-[220px] lg:h-[340px] lg:max-w-[260px]'>
 						<Image
 							src={item.jarImage}
 							alt={item.name}
 							fill
 							className='object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.28)]'
 							priority={item.id === 'blackberry'}
+							sizes='(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px'
 						/>
 					</div>
 				</div>
 
-				<div className='relative z-10 px-7 pb-7 md:px-8 md:pb-8'>
+				<div className='relative z-10 px-4 pb-4 sm:px-6 sm:pb-5 md:px-8 md:pb-6'>
 					<p className='max-w-sm text-sm leading-6 text-white/82'>
 						{item.comingSoon
 							? 'Apple flavour coming soon.'
@@ -147,7 +148,7 @@ function ProductCard({ item }: { item: ProductCardItem }) {
 
 export default function ProductsPage() {
 	return (
-		<main className='bg-[#ede7da] pt-55 text-[#111111]'>
+		<main className='bg-[#ede7da] pt-32 text-[#111111] md:pt-55'>
 			<CraftSection />
 
 			<section className='w-full overflow-hidden'>
