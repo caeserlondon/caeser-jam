@@ -38,9 +38,9 @@ export default function SiteFooter() {
 	const year = new Date().getFullYear()
 
 	return (
-		<footer className='bg-[#ede7da] px-6 pb-10 pt-24 text-[#111111]'>
-			<div className='mx-auto max-w-7xl border-t border-black/10 pt-12'>
-				<div className='flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between'>
+		<footer className='bg-[#ede7da] px-6 pb-10 pt-16 text-[#111111] md:pt-24'>
+			<div className='mx-auto max-w-7xl border-t border-black/10 pt-10 md:pt-12'>
+				<div className='flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between'>
 					<div className='max-w-xl'>
 						<p className='text-[11px] uppercase tracking-[0.24em] text-[#555555]'>
 							Designed & built by
@@ -55,36 +55,68 @@ export default function SiteFooter() {
 						</p>
 					</div>
 
-					<div className='flex flex-wrap items-center gap-4'>
-						<FlipButton text='Contact' width={170} href='/contact' />
+					<div className='w-full max-w-[360px] lg:w-auto lg:max-w-none'>
+						<div className='mb-4 flex justify-start lg:mb-0 lg:hidden'>
+							<FlipButton text='Contact' width={170} href='/contact' />
+						</div>
 
-						<CircleGlassButton
-							href='https://caeser-ibrahim.vercel.app'
-							ariaLabel='Portfolio'
-							size={68}
-						>
-							<GlobeIcon />
-						</CircleGlassButton>
+						<div className='flex items-center gap-4 lg:hidden'>
+							<CircleGlassButton
+								href='https://caeser-ibrahim.vercel.app'
+								ariaLabel='Portfolio'
+								size={68}
+							>
+								<GlobeIcon />
+							</CircleGlassButton>
 
-						<CircleGlassButton
-							href='https://github.com/caeserlondon'
-							ariaLabel='GitHub'
-							size={68}
-						>
-							<GitHubIcon />
-						</CircleGlassButton>
+							<CircleGlassButton
+								href='https://github.com/caeserlondon'
+								ariaLabel='GitHub'
+								size={68}
+							>
+								<GitHubIcon />
+							</CircleGlassButton>
 
-						<CircleGlassButton
-							href='https://linkedin.com/in/caeser-ibrahim'
-							ariaLabel='LinkedIn'
-							size={68}
-						>
-							<LinkedInIcon />
-						</CircleGlassButton>
+							<CircleGlassButton
+								href='https://linkedin.com/in/caeser-ibrahim'
+								ariaLabel='LinkedIn'
+								size={68}
+							>
+								<LinkedInIcon />
+							</CircleGlassButton>
+						</div>
+
+						<div className='hidden items-center gap-4 lg:flex'>
+							<FlipButton text='Contact' width={170} href='/contact' />
+
+							<CircleGlassButton
+								href='https://caeser-ibrahim.vercel.app'
+								ariaLabel='Portfolio'
+								size={68}
+							>
+								<GlobeIcon />
+							</CircleGlassButton>
+
+							<CircleGlassButton
+								href='https://github.com/caeserlondon'
+								ariaLabel='GitHub'
+								size={68}
+							>
+								<GitHubIcon />
+							</CircleGlassButton>
+
+							<CircleGlassButton
+								href='https://linkedin.com/in/caeser-ibrahim'
+								ariaLabel='LinkedIn'
+								size={68}
+							>
+								<LinkedInIcon />
+							</CircleGlassButton>
+						</div>
 					</div>
 				</div>
 
-				<div className='mt-12 border-t border-black/10 pt-5'>
+				<div className='mt-10 border-t border-black/10 pt-5 md:mt-12'>
 					<p className='text-center text-sm text-[#555555]'>
 						© {year} Caeser Ibrahim. All rights reserved.
 					</p>
