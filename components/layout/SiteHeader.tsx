@@ -49,9 +49,41 @@ function ChevronDownIcon() {
 	)
 }
 
+function MenuIcon() {
+	return (
+		<svg
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			strokeWidth='1.8'
+			className='h-5 w-5'
+		>
+			<path d='M4 7h16' />
+			<path d='M4 12h16' />
+			<path d='M4 17h16' />
+		</svg>
+	)
+}
+
+function CloseIcon() {
+	return (
+		<svg
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			strokeWidth='1.8'
+			className='h-5 w-5'
+		>
+			<path d='M6 6l12 12' />
+			<path d='M18 6l-12 12' />
+		</svg>
+	)
+}
+
 export default function SiteHeader() {
 	const [productsMounted, setProductsMounted] = useState(false)
 	const [productsVisible, setProductsVisible] = useState(false)
+	const [mobileOpen, setMobileOpen] = useState(false)
 
 	const closeTimerRef = useRef<number | null>(null)
 	const unmountTimerRef = useRef<number | null>(null)
@@ -102,6 +134,11 @@ export default function SiteHeader() {
 		}, 100)
 	}
 
+	const goTo = (href: string) => {
+		setMobileOpen(false)
+		router.push(href)
+	}
+
 	return (
 		<>
 			<header className='pointer-events-none absolute inset-x-0 top-0 z-50'>
@@ -110,8 +147,12 @@ export default function SiteHeader() {
 						<FlipButton text='Home' width={108} href='/' />
 					</div>
 
-					<div className='pointer-events-auto flex items-center gap-4'>
-						<div onMouseEnter={openProducts} onMouseLeave={closeProducts}>
+					<div className='pointer-events-auto hidden items-center gap-4 lg:flex'>
+						<div
+							className='hidden lg:block'
+							onMouseEnter={openProducts}
+							onMouseLeave={closeProducts}
+						>
 							<FlipButton
 								text='Products'
 								rightIcon={<ChevronDownIcon />}
@@ -139,8 +180,68 @@ export default function SiteHeader() {
 							) : null}
 						</div>
 					</div>
+
+					<div className='pointer-events-auto flex items-center gap-2 lg:hidden'>
+						<div className='relative'>
+							<CircleGlassButton ariaLabel='Shopping cart' onClick={openCart}>
+								<CartIcon />
+							</CircleGlassButton>
+
+							{itemCount > 0 ? (
+								<span className='absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#111111] px-1 text-[11px] font-medium text-[#ede7da] shadow-[0_4px_12px_rgba(0,0,0,0.18)]'>
+									{itemCount}
+								</span>
+							) : null}
+						</div>
+
+						<button
+							type='button'
+							onClick={() => setMobileOpen((prev) => !prev)}
+							aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+							className='flex h-[44px] w-[44px] items-center justify-center rounded-full border border-white/20 bg-white/8 text-[#ce983c] backdrop-blur-xl'
+						>
+							{mobileOpen ? <CloseIcon /> : <MenuIcon />}
+						</button>
+					</div>
 				</div>
 			</header>
+
+			{mobileOpen && (
+				<div className='fixed inset-0 z-40 bg-black/12 lg:hidden'>
+					<div
+						className='absolute inset-0'
+						onClick={() => setMobileOpen(false)}
+					/>
+
+					<div className='absolute left-4 right-4 top-[88px] rounded-[24px] border border-white/12 bg-white/10 p-4 backdrop-blur-xl'>
+						<div className='flex flex-col gap-3'>
+							<button
+								type='button'
+								onClick={() => goTo('/products')}
+								className='rounded-[18px] border border-white/10 bg-white/8 px-4 py-3 text-left text-sm uppercase tracking-[0.12em] text-[#ce983c]'
+							>
+								Products
+							</button>
+
+							<button
+								type='button'
+								onClick={() => goTo('/about')}
+								className='rounded-[18px] border border-white/10 bg-white/8 px-4 py-3 text-left text-sm uppercase tracking-[0.12em] text-[#ce983c]'
+							>
+								About
+							</button>
+
+							<button
+								type='button'
+								onClick={() => goTo('/contact')}
+								className='rounded-[18px] border border-white/10 bg-white/8 px-4 py-3 text-left text-sm uppercase tracking-[0.12em] text-[#ce983c]'
+							>
+								Contact
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
 
 			{productsMounted ? (
 				<ProductDropdown
