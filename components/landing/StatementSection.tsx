@@ -3,15 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 const STATEMENT = 'DESIGN & BUILD BY CAESER IBRAHIM'
-const GAP = 250 // exact gap between one sentence and the next
-const SPEED = 110 // px per second
+const GAP = 250
+const SPEED = 110
 const ARC_HEIGHT = 260
 const TEXT_LAYER_HEIGHT = 380
 const OVERSIZE = 1.28
 
-// tweak these to taste
 const FONT_SIZE = 72
-const TEXT_DY = -55 // pushes the text down below the arc path
+const TEXT_DY = -55
 
 export default function StatementSection() {
 	const sectionRef = useRef<HTMLElement>(null)
@@ -87,8 +86,6 @@ export default function StatementSection() {
 		if (!pathLength || !textLength) return []
 
 		const distance = textLength + GAP
-
-		// enough copies so the path is always filled
 		const copyCount =
 			Math.ceil((pathLength + textLength + distance * 2) / distance) + 1
 
@@ -100,10 +97,9 @@ export default function StatementSection() {
 	return (
 		<section
 			ref={sectionRef}
-			className='relative -mt-[220px] overflow-hidden pt-[220px]'
+			className='relative -mt-[120px] overflow-hidden pt-[120px] md:-mt-[220px] md:pt-[220px]'
 		>
-			{/* cream arc */}
-			<div className='absolute inset-x-0 top-0 h-[240px] pointer-events-none overflow-hidden'>
+			<div className='pointer-events-none absolute inset-x-0 top-0 h-[140px] overflow-hidden md:h-[240px]'>
 				<svg
 					viewBox={`0 0 ${arcWidth} ${ARC_HEIGHT}`}
 					preserveAspectRatio='none'
@@ -118,10 +114,8 @@ export default function StatementSection() {
 				</svg>
 			</div>
 
-			{/* cream body */}
-			<div className='relative bg-[#ede7da] pb-16'>
-				{/* moving curved text */}
-				<div className='relative -mt-[20px] h-[420px] overflow-hidden'>
+			<div className='relative bg-[#ede7da] pb-8 md:pb-16'>
+				<div className='hidden md:block relative -mt-[20px] h-[420px] overflow-hidden'>
 					<svg
 						viewBox={`0 0 ${arcWidth} ${TEXT_LAYER_HEIGHT}`}
 						preserveAspectRatio='none'
@@ -133,7 +127,6 @@ export default function StatementSection() {
 							<path id='statement-arc-path' d={arcPath} ref={pathRef} />
 						</defs>
 
-						{/* hidden text only for measuring exact width */}
 						<text
 							ref={measureTextRef}
 							x={-99999}
