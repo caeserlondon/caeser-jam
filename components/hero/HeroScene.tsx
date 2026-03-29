@@ -14,7 +14,7 @@ export default function HeroScene({
 }: HeroSceneProps) {
 	return (
 		<div
-			className='relative transition-all'
+			className='relative hidden md:block transition-all'
 			style={{
 				opacity: sceneVisible ? 1 : 0,
 				transform: sceneVisible
@@ -31,7 +31,7 @@ export default function HeroScene({
 				width={1800}
 				height={1100}
 				className='h-auto w-full object-contain'
-				sizes='(max-width: 820px) 100vw, 778px'
+				sizes='(max-width: 767px) 100vw, (max-width: 1279px) 90vw, 1200px'
 				fetchPriority='high'
 			/>
 		</div>

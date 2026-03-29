@@ -9,7 +9,7 @@ type HeroJarProps = {
 
 export default function HeroJar({ jarImage, name, jarVisible }: HeroJarProps) {
 	return (
-		<div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
+		<div className='pointer-events-none absolute inset-0 flex items-start justify-center pt-10 md:items-center md:pt-0'>
 			<div
 				className='transition-all'
 				style={{
@@ -27,9 +27,9 @@ export default function HeroJar({ jarImage, name, jarVisible }: HeroJarProps) {
 					alt={name}
 					width={460}
 					height={680}
-					className='h-auto w-[240px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)] sm:w-[285px] md:w-[335px] lg:w-[385px]'
-					sizes='(max-width: 639px) 240px, (max-width: 767px) 285px, (max-width: 1023px) 335px, 385px'
 					fetchPriority='high'
+					className='h-auto w-[340px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)] sm:w-[360px] md:w-[335px] lg:w-[385px]'
+					sizes='(max-width: 639px) 340px, (max-width: 767px) 360px, (max-width: 1023px) 335px, 385px'
 				/>
 			</div>
 		</div>

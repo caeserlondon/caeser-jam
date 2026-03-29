@@ -1,5 +1,6 @@
 'use client'
 
+import Hero from '@/components/hero/Hero'
 import HeroBackground from '@/components/hero/HeroBackground'
 import HeroControls from '@/components/hero/HeroControls'
 import HeroJar from '@/components/hero/HeroJar'
@@ -61,57 +62,63 @@ export default function HeroScrollSection() {
 	const controlsOpacity = clamp(1 - progress * 1.8, 0, 1)
 
 	return (
-		<section ref={sectionRef} className='relative h-[125vh]'>
-			<div className='sticky top-0 h-screen overflow-hidden bg-black'>
-				<HeroBackground
-					baseBgIndex={baseBgIndex}
-					overlayBgIndex={overlayBgIndex}
-					bgOverlayVisible={bgOverlayVisible}
-				/>
+		<>
+			<div className='md:hidden'>
+				<Hero />
+			</div>
 
-				<div className='relative z-10 mx-auto flex h-screen max-w-7xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8'>
-					<div className='relative w-full'>
-						<div className='relative mx-auto max-w-[82rem]'>
-							<div
-								className='relative transition-transform'
-								style={{
-									transform: `translateY(${stageTranslateY}px)`,
-									opacity: stageOpacity,
-								}}
-							>
-								<HeroScene
-									sceneImage={flavour.sceneImage}
-									name={flavour.name}
-									sceneVisible={sceneVisible}
-								/>
+			<section ref={sectionRef} className='relative hidden h-[125vh] md:block'>
+				<div className='sticky top-0 h-screen overflow-hidden bg-black'>
+					<HeroBackground
+						baseBgIndex={baseBgIndex}
+						overlayBgIndex={overlayBgIndex}
+						bgOverlayVisible={bgOverlayVisible}
+					/>
 
-								<HeroJar
-									jarImage={flavour.jarImage}
-									name={flavour.name}
-									jarVisible={jarVisible}
-								/>
+					<div className='relative z-10 mx-auto flex h-screen max-w-7xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8'>
+						<div className='relative w-full'>
+							<div className='relative mx-auto max-w-[82rem]'>
+								<div
+									className='relative transition-transform'
+									style={{
+										transform: `translateY(${stageTranslateY}px)`,
+										opacity: stageOpacity,
+									}}
+								>
+									<HeroScene
+										sceneImage={flavour.sceneImage}
+										name={flavour.name}
+										sceneVisible={sceneVisible}
+									/>
 
-								<HeroTitle title={flavour.name} titleVisible={titleVisible} />
-							</div>
+									<HeroJar
+										jarImage={flavour.jarImage}
+										name={flavour.name}
+										jarVisible={jarVisible}
+									/>
 
-							<div
-								style={{
-									transform: `translateY(${controlsTranslateY}px)`,
-									opacity: controlsOpacity,
-								}}
-							>
-								<HeroControls
-									currentIndex={sceneIndex}
-									total={flavours.length}
-									isTransitioning={isTransitioning}
-									onPrev={() => changeFlavour('prev')}
-									onNext={() => changeFlavour('next')}
-								/>
+									<HeroTitle title={flavour.name} titleVisible={titleVisible} />
+								</div>
+
+								<div
+									style={{
+										transform: `translateY(${controlsTranslateY}px)`,
+										opacity: controlsOpacity,
+									}}
+								>
+									<HeroControls
+										currentIndex={sceneIndex}
+										total={flavours.length}
+										isTransitioning={isTransitioning}
+										onPrev={() => changeFlavour('prev')}
+										onNext={() => changeFlavour('next')}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</>
 	)
 }

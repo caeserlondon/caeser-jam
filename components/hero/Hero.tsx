@@ -24,14 +24,38 @@ export default function Hero() {
 	const flavour = flavours[sceneIndex]
 
 	return (
-		<section className='relative min-h-screen overflow-hidden bg-black'>
+		<section className='relative overflow-hidden bg-black'>
 			<HeroBackground
 				baseBgIndex={baseBgIndex}
 				overlayBgIndex={overlayBgIndex}
 				bgOverlayVisible={bgOverlayVisible}
 			/>
 
-			<div className='relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8'>
+			{/* MOBILE */}
+			<div className='relative z-10 px-4 pb-10 pt-24 md:hidden'>
+				<div className='mx-auto max-w-md'>
+					<div className='relative h-[410px]'>
+						<HeroJar
+							jarImage={flavour.jarImage}
+							name={flavour.name}
+							jarVisible={jarVisible}
+						/>
+					</div>
+
+					<div className='m-4 flex justify-center'>
+						<HeroControls
+							currentIndex={sceneIndex}
+							total={flavours.length}
+							isTransitioning={isTransitioning}
+							onPrev={() => changeFlavour('prev')}
+							onNext={() => changeFlavour('next')}
+						/>
+					</div>
+				</div>
+			</div>
+
+			{/* DESKTOP / TABLET */}
+			<div className='relative z-10 mx-auto hidden min-h-screen max-w-7xl items-center justify-center px-4 py-8 sm:px-6 md:flex lg:px-8'>
 				<div className='relative w-full'>
 					<div className='relative mx-auto max-w-[78rem]'>
 						<HeroScene
@@ -48,13 +72,15 @@ export default function Hero() {
 
 						<HeroTitle title={flavour.name} titleVisible={titleVisible} />
 
-						<HeroControls
-							currentIndex={sceneIndex}
-							total={flavours.length}
-							isTransitioning={isTransitioning}
-							onPrev={() => changeFlavour('prev')}
-							onNext={() => changeFlavour('next')}
-						/>
+						<div className='mt-[420px] flex justify-center'>
+							<HeroControls
+								currentIndex={sceneIndex}
+								total={flavours.length}
+								isTransitioning={isTransitioning}
+								onPrev={() => changeFlavour('prev')}
+								onNext={() => changeFlavour('next')}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
